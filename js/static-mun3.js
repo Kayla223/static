@@ -32,10 +32,9 @@
    clearInterval(time);
    setTimeStr();
    oImg.style.visibility = "visible";
-   // 可以点暂停
    oPause.disabled = true;
-   // 其他标签都不能点
    oStart.disabled = true;
+    //可以重置
    oReset.disabled = false;
   }
 
@@ -43,7 +42,7 @@
   function onPause(){
     // 点击暂停按钮,清除定时器,终止秒表执行
    clearInterval(time);
-   // 暂停本身和开始不能点
+   // 本身不能点
    oPause.disabled = false;
    oStart.disabled = true;
    oReset.disabled = false;
@@ -51,14 +50,12 @@
 
   // 重置按钮
   oReset.onclick = function(){
-   // 点击重置按钮,将所有的数据都恢复到0的状态
-   // 所有变量存储的数据都是0, div中的内容也恢复到0
-   // 定义所有存储时间的变量存储的数值为0
+   // 点击重置按钮,倒计时开始
    clearInterval(time);
    ms = 0; // 毫秒
    s = 14; // 秒
    m = 0; // 分钟
-   // 将div中的内容,设定为初始状态的00:00:00:00内容
+   // 将div中的内容,设定为初始状态的00:00:00内容
    oDiv.innerHTML = '00分00秒00';
    oImg.style.visibility = "hidden";
    // 开始可以点
@@ -74,12 +71,12 @@
   // 当点击暂停按钮时，清除的是time中存储的序号是10的这一个定时器，之前 1-9定时器仍然会执行
   // 解决方法：点击开始按钮之后，在点击暂停按钮之前，禁止再次点击开始按钮。也就是在清除原有定时器之前，不允许生成新的定时器
 
-  // 定义函数，这个函数的作用就是记录执行的时间，有小时、分钟、秒、毫秒 4个部分。将记录的时间写入到div中，div中起始时默认都是0
+  // 定义函数，这个函数的作用就是记录执行的时间，有分钟、秒、毫秒 4个部分，将记录的时间写入到div中
   function setTimeStr(){
    // 赋值操作,将定时器,存储在全局作用域变量中
-   // 此处只是赋值操作
+   // 此处 倒计时操作
    time = setInterval(function(){
-
+   
        if(ms == 0){
            if( m == 0 && s > 0){
                s--;
