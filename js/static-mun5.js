@@ -44,6 +44,7 @@
    oReset.disabled = true;
   }
 
+  function setTimeStr(){
    time = setInterval(function(){
        if(ms == 0){
            if( m == 0 && s > 0){
@@ -77,6 +78,7 @@
     }else{
      mStr = m;
     }
+
     oDiv.innerHTML = `${mStr}分${sStr}秒${msStr}`;
    } , 10);
    console.log(time);
